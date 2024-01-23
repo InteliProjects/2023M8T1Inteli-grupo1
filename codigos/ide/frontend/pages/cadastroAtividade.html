@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- Definição do tipo de documento como HTML5 -->
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Meta tag para definir o conjunto de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Meta tag para garantir a responsividade em dispositivos móveis -->
+    <title>Cadastro de Atividade</title>
+    <!-- Título da página, aparece na aba do navegador -->
+    <link rel="stylesheet" href="../css/cadastroPaciente.css" />
+    <!-- Link para o arquivo CSS externo -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="cadastro-container">
+      <!-- Div principal que contém o formulário de cadastro -->
+
+      <form id="cadastroForm">
+        <!-- Formulário de cadastro de pacientes -->
+
+        <h2>Cadastro de Atividade</h2>
+        <!-- Título do formulário -->
+
+        <div class="input-group">
+          <label for="nome">Título</label>
+          <!-- Campo de entrada para o nome do paciente -->
+          <input type="text" id="titulo" name="titulo" required />
+          <!-- Campo de texto obrigatório para o nome -->
+        </div>
+
+        <button type="submit" id="submit">Cadastrar</button>
+        <!-- Botão para enviar o formulário -->
+      </form>
+    </div>
+
+    <script src="../scripts/cadastroAtividade.js"></script>
+    <!-- Link para o script JavaScript externo -->
+  </body>
+</html>

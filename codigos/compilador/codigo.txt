@@ -1,0 +1,5 @@
+programa "geracao_codigo1":
+inicio
+a = 3
+mostrar(a)
+fim.

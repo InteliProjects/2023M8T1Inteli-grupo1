@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Metadados da página -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Link para o arquivo de estilo CSS -->
+    <link rel="stylesheet" href="../css/codigo.css" />
+
+    <!-- Link para o arquivo de script JavaScript -->
+    <script src="../scripts/codigo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- Título da página -->
+    <title>Editor</title>
+  </head>
+
+  <body onload="clicarCenario()">
+    <!-- Cabeçalho da página -->
+    <div id="header">
+      <!-- Botão "Sair" -->
+      <div id="sair">
+        <div class="imgcontainer">
+          <img src="../img/voltar.png" alt="Avatar" class="avatar" />
+        </div>
+        <h2>Sair</h2>
+      </div>
+      <!-- Botão "Salvar" -->
+      <div id="salvar">
+        <div class="imgcontainer">
+          <img src="../img/save.png" alt="Avatar" class="avatar" />
+        </div>
+        <h2>Salvar</h2>
+      </div>
+      <!-- Botão "Gerar Código" -->
+      <div id="gerar-codigo">
+        <div class="imgcontainer">
+          <img src="../img/script.png" alt="Avatar" class="avatar" />
+        </div>
+        <button id="gerador">Jogar</button>
+      </div>
+      <!-- Botão para mostrar a descrição das cores -->
+      <div id="altoContraste">
+        <div class="imgcontainer">
+          <img src="../img/contrast.png" alt="Avatar" class="avatar" />
+        </div>
+
+        <button
+          id="botaoAltoContraste"
+          onclick="altoContraste();openFeedbackModal()"
+        >
+          Descritivo Cores
+        </button>
+      </div>
+      <!-- <div id="modoNoturno">
+        <div class="imgcontainer">
+          <img src="../img/contrast.png" alt="Avatar" class="avatar" />
+        </div>
+        <button id="modoNoturnoButton" onclick="openFeedbackModal()">
+          Modo Noturno
+        </button>
+      </div> -->
+    </div>
+
+    <!-- Corpo da página -->
+    <div id="middle">
+      <!-- Dropdowns para categorias de objetos -->
+      <div id="objects">
+        <!-- Dropdown Alimentação -->
+
+        <!-- Opções para Alimentação -->
+        <select id="dropdownUniversal" onchange="adicionarImagem(this.value)">
+          <option value="alimentacao">Alimentação</option>
+          <option value="maca">Maçã</option>
+          <option value="banana">Banana</option>
+          <option value="cristianismo">Cristianismo</option>
+          <option value="judaismo">Judaísmo</option>
+          <option value="futebol">Futebol</option>
+          <option value="volei">Vôlei</option>
+          <option value="peixe">Peixe</option>
+          <option value="rato">Rato</option>
+          <option value="arvore">Árvore</option>
+          <option value="flor">Flor</option>
+          <option value="bicicleta">Bicicleta</option>
+          <option value="carro">Carro</option>
+          <option value="natal">Natal</option>
+          <option value="pascoa">Páscoa</option>
+          <option value="verde">Verde</option>
+          <option value="roxo">Roxo</option>
+          <option value="medico">Médico</option>
+          <option value="professor">Professor</option>
+          <option value="guitarra">Guitarra</option>
+          <option value="violino">Violino</option>
+        </select>
+
+        <div id="dropdown-container1" data-tooltip="Imagens que vão no game.">
+          <div id="file-upload">
+            <div class="upload">
+              <a>
+                <span
+                  ><i
+                    style="font-family: courier, arial, helvetica"
+                    class="fa fa-camera"
+                  ></i
+                  >Carregar fotos</span
+                >
+                <div class="files">
+                  <input
+                    type="file"
+                    id="files"
+                    name="files[]"
+                    multiple=""
+                    onchange="previewImages()"
+                  />
+                </div>
+              </a>
+            </div>
+            <div class="box">
+              <div
+                style="font-family: courier, arial, helvetica"
+                draggable="true"
+                class="info-box"
+              >
+                Vazio
+              </div>
+              <div id="container"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cenário e Editor -->
+      <div id="cenario">
+        <div id="fundo-cenario">
+          <div id="tab">
+            <!-- Botões para alternar entre Cenário e Editor -->
+            <button
+              id="botaoCanvas"
+              data-tooltip="Clique para definir o que aparece pro usuário."
+              class="tabbutton"
+              onclick="trocarTab(event, 'canvas')"
+              data-tooltip="Editor de código, onde você monta a lógica."
+            >
+              Cenário
+            </button>
+            <button
+              id="botaoEditor"
+              class="tabbutton"
+              onclick="trocarTab(event, 'editor')"
+              data-tooltip="Editor de código, onde você monta a lógica."
+            >
+              Editor
+            </button>
+          </div>
+
+          <!-- Cenário -->
+          <div
+            id="canvas"
+            class="tabcontent"
+            ondrop="drop_handler(event)"
+            ondragover="dragover_handler(event)"
+          >
+            <!-- Conteúdo do cenário -->
+            <textarea
+              id="titulo-atividade"
+              placeholder="TÍTULO DA ATIVIDADE"
+              data-tooltip="Simulação do tapete sensorial."
+              class="tapete-lateral"
+            ></textarea>
+            <div id="editor-content">
+              <div
+                id="bloco-imagem"
+                ondrop="dropImagem(event)"
+                ondragover="allowDrop(event)"
+                class="editor-bloco"
+                draggable="true"
+              >
+                IMAGEM
+              </div>
+            </div>
+
+            <div id="feedbackModal" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeFeedbackModal()"
+                  >&times;</span
+                >
+                <h2>Descritivo de Cores Ativado com Sucesso!</h2>
+              </div>
+            </div>
+          </div>
+
+          <!-- Editor -->
+          <div id="editor" class="tabcontent"></div>
+        </div>
+      </div>
+
+      <!-- Tapete lateral com cores -->
+      <div
+        id="tapete"
+        data-tooltip="Simulação do tapete sensorial."
+        class="tapete-lateral"
+      >
+        <h3 id="tapete-tab">TAPETE</h3>
+        <div id="tapete-cores" class="tapete-container">
+          <!-- Cores no tapete -->
+          <div>
+            <div
+              class="tapete-cor code-word"
+              data-cor="green"
+              style="background-color: green"
+              onclick="adicionarCorAoCenario('green')"
+              draggable="true"
+            >
+              1
+            </div>
+            <!-- Cor por escrito -->
+            <h3 class="descritorCor">1: verde</h3>
+          </div>
+          <div>
+            <div
+              class="tapete-cor code-word"
+              data-cor="blue"
+              style="background-color: blue"
+              onclick="adicionarCorAoCenario('blue')"
+              draggable="true"
+            >
+              2
+            </div>
+            <!-- Cor por escrito -->
+            <h3 class="descritorCor">2: azul</h3>
+          </div>
+          <div>
+            <div
+              class="tapete-cor code-word"
+              data-cor="yellow"
+              style="background-color: yellow; color: #000000"
+              onclick="adicionarCorAoCenario('yellow')"
+              draggable="true"
+            >
+              3
+            </div>
+            <!-- Cor por escrito -->
+            <h3 class="descritorCor">3: amarelo</h3>
+          </div>
+          <div>
+            <div
+              class="tapete-cor code-word"
+              data-cor="purple"
+              style="background-color: purple"
+              onclick="adicionarCorAoCenario('purple')"
+              draggable="true"
+            >
+              4
+            </div>
+            <!-- Cor por escrito -->
+            <h3 class="descritorCor">4: roxo</h3>
+          </div>
+          <div>
+            <div
+              class="tapete-cor code-word"
+              data-cor="black"
+              style="background-color: black"
+              onclick="adicionarCorAoCenario('black')"
+              draggable="true"
+            >
+              5
+            </div>
+            <!-- Cor por escrito -->
+            <h3 class="descritorCor">5: preto</h3>
+          </div>
+          <div>
+            <div
+              class="tapete-cor code-word"
+              data-cor="red"
+              style="background-color: #ad0000"
+              onclick="adicionarCorAoCenario('red')"
+              draggable="true"
+            >
+              6
+            </div>
+            <!-- Cor por escrito -->
+            <h3 class="descritorCor">6: vermelho</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rodapé da página -->
+    <div id="footer" data-tooltip="Blocos de código para o editor.">
+      <!-- Palavras-chave e área de exclusão -->
+      <div id="control-flow-structures" class="code-blocks">
+        <div class="code-block-type">ESTRUTURAS DE FLUXO</div>
+        <div class="code-block-list">
+          <div
+            id="if-statement"
+            class="argumentative code-word code-block conditionals"
+            draggable="true"
+            style="background-color: rgb(196, 127, 0)"
+          >
+            SE ... ENTÃO ... SENÃO ...
+          </div>
+          <div
+            id="while-loop"
+            class="argumentative code-block code-word loops"
+            draggable="true"
+            style="background-color: rgb(196, 127, 0)"
+          >
+            ENQUANTO ... FAÇA ...
+          </div>
+        </div>
+      </div>
+
+      <!-- Comandos lógicos para criar os jogos para o paciente -->
+      <div id="relationals" class="code-blocks">
+        <!-- Comandos relacionais -->
+        <div class="code-block-type">RELACIONAIS</div>
+        <div class="code-block-list">
+          <div id="==" class="code-word relationals" draggable="true">
+            IGUAL A
+          </div>
+          <div id=">" class="code-word relationals" draggable="true">
+            MAIOR QUE
+          </div>
+          <div id=">=" class="code-word relationals" draggable="true">
+            MAIOR OU IGUAL A
+          </div>
+          <div id="<" class="code-word relationals" draggable="true">
+            MENOR QUE
+          </div>
+          <div id="<=" class="code-word relationals" draggable="true">
+            MENOR OU IGUAL A
+          </div>
+          <div id="<>" class="code-word relationals" draggable="true">
+            DIFERENTE DE
+          </div>
+        </div>
+      </div>
+
+      <div id="logicals" class="code-blocks">
+        <!-- Comandos lógicos -->
+        <div class="code-block-type">LÓGICOS</div>
+        <div class="code-block-list">
+          <div id="e" class="code-word logicals" draggable="true">E</div>
+          <div id="ou" class="code-word logicals" draggable="true">OU</div>
+          <div id="nao" class="code-word logicals" draggable="true">NÃO</div>
+        </div>
+      </div>
+
+      <div id="inputs" class="code-blocks">
+        <!-- Comando de leitura -->
+        <div class="code-block-type">LEITURA</div>
+        <div class="code-block-list">
+          <div
+            class="code-word input-functions"
+            id="quadrante"
+            draggable="true"
+          >
+            TECLA PRESS
+          </div>
+          <div
+            class="argumentative code-word input-functions functions"
+            id="ler_varios()"
+            draggable="true"
+          >
+            CLICAR EM ... VEZES ... TOLERAR ...
+          </div>
+        </div>
+      </div>
+
+      <div id="other-functions" class="code-blocks">
+        <!-- Funções de retorno -->
+        <div class="code-block-type">FUNÇÕES</div>
+        <div class="code-block-list">
+          <div
+            id="show-function"
+            class="argumentative code-word functions"
+            draggable="true"
+          >
+            MOSTRAR ...
+          </div>
+          <div
+            id="play-function"
+            class="argumentative code-word functions"
+            draggable="true"
+          >
+            TOCAR ...
+          </div>
+          <div
+            id="show-play-function"
+            class="argumentative code-word functions"
+            draggable="true"
+          >
+            MOSTRAR ... E TOCAR ...
+          </div>
+          <div
+            id="wait-function"
+            class="argumentative code-word functions"
+            draggable="true"
+          >
+            ESPERAR ... MS
+          </div>
+        </div>
+      </div>
+
+      <div id="trash" class="code-blocks">
+        <!-- Campo para apagar comandos -->
+        <div class="code-block-type">APAGAR</div>
+        <div class="code-block-list">
+          <div
+            id="deleting-area"
+            class="droppable-area"
+            ondrop="dropDelete(event)"
+            ondragover="allowDrop(event)"
+          >
+            APAGAR
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script JavaScript para funcionalidades de codificação -->
+    <script src="../scripts/coding.js"></script>
+    <script type="module" src="../scripts/geracaoCodigo.js"></script>
+  </body>
+</html>

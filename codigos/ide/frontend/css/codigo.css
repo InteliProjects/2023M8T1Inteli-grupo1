@@ -1,0 +1,642 @@
+/* Estilos para o cabeçalho */
+#header {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    background-color: #fff;
+    width: 100%;
+    height: 10%;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2vh;
+}
+
+/* Estilos para a opção 'Sair' */
+#sair {
+    margin: 0 6vh 0 2vh;
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+
+}
+
+/* Estilos para o corpo do tapete */
+#corpoTapete {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilos para a opção 'Salvar' */
+#salvar {
+    display: flex;
+    flex-direction: row;
+    margin: 0 6vh 0 2vh;
+    font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif';
+    font-size: 20px;
+}
+
+#altoContraste{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    width: 38vh;
+
+}
+
+#modoNoturno {   
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+}
+
+/* Estilos para a opção 'Gerar Código' */
+#gerar-codigo {
+    display: flex;
+    flex-direction: row;
+    margin: 0 6vh 0 0;
+}
+
+#gerador{
+    font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif';
+    font-size: 25px;
+    font-weight: bold;
+    background-color: white;
+}
+
+#botaoAltoContraste {
+    background-color: white;
+    border-width: 1px;
+    font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif';
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.descritorCor{
+    display: none;
+}
+
+/* Estilos para a imagem do avatar */
+.imgcontainer {
+    width: 7vh;
+    margin: 0 1vh 0 0;
+    text-align: center;
+}
+
+img.avatar {
+    width: 7vh;
+    border-radius: 10%;
+}
+
+/* Estilos para a seção do meio */
+#middle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 2vh;
+}
+
+/* Estilos para o rodapé */
+#footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #fff;
+    width: 100%;
+    height: 10%;
+}
+
+/* Estilos para as abas */
+#tab {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    height: 10%;
+    color: rgb(255, 255, 255);
+    overflow: hidden;
+}
+
+.tabbutton {
+    border: none;
+    background-color: inherit;
+    color: inherit;
+    width: 180px;
+}
+
+#tab button:hover {
+    background-color: #000000;
+}
+
+#tab button:active {
+    background-color: #000000;
+}
+
+.tabcontent.active-tab {
+    display: block;
+}
+
+.tabcontent:not(.active-tab) {
+    display: none;
+}
+
+.tabbutton.active {
+    background-color: #000000;
+}
+
+/* Estilos para o fundo do cenário */
+#fundo-cenario {
+    height: 67vh;
+    width: 120vh;
+    background-color: #555;
+    padding: 10px;
+    padding-top: 0px;
+}
+
+/* Estilos para o canvas */
+#canvas {
+    position: absolute;
+    cursor: pointer;
+    display: none;
+    height: 60vh;
+    width: 120vh;
+}
+
+/* Estilos para os comandos do tapete */
+.comandoTapete {
+    cursor: pointer;
+    width: 10vh;
+    height: 5vh;
+    position: absolute;
+    background-color: #8d8a8a;
+    text-align: center;
+    border-radius: 10px; /* Bordas arredondadas */
+    background-image: linear-gradient(to right, #8d8a8a, #9d9a9a); /* Efeito de gradiente */
+}
+
+/* Estilos para as abas de conteúdo */
+.tabcontent {
+    background-color: #f1f1f1;
+}
+
+.tabcontent.active-tab {
+    display: flex;
+    flex-direction: column; /* Altera a direção da flex para coluna */
+}
+
+/* Estilos para o editor */
+#editor {
+    height: 60vh;
+    width: 120vh;
+    text-align: left;
+    display: none;
+}
+
+/* Estilos para o tapete lateral */
+#tapete-lateral {
+    height: auto;
+    width: 20%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: 15px; /* Bordas arredondadas */
+    background-image: linear-gradient(to bottom, #ffffff, #e6e6e6); /* Efeito de gradiente */
+}
+
+/* Estilos para as cores do tapete */
+#tapete-cores {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px;
+}
+
+.tapete-cor {
+    height: 80px;
+    width: 80px;
+    cursor: pointer;
+    border: 2px solid #ffffff;
+    border-radius: 5px; /* Bordas arredondadas */
+}
+
+/* Estilos para a cor selecionada no tapete */
+.tapete-cor.selecionado {
+    border: 2px solid #000000;
+}
+
+/* Estilos para o dropdown container */
+#dropdown-container {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 16px;
+}
+
+/* Estilos para o editor de código */
+#editor {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #f1f1f1;
+    height: 60vh;
+    width: 120vh;
+}
+
+#titulo-atividade {
+    width: 80%;
+    min-height: 80px;
+    padding: 20px;
+    background-color: #fff;
+    resize: none;
+    box-sizing: border-box;
+    margin-left: 10%;
+    text-align: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+#editor-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%;
+    position: relative;
+}
+
+/* Estilos para os blocos do editor */
+.editor-bloco {
+    border: 1px solid #ccc;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 15px;
+}
+
+#bloco-imagem {
+    position: absolute;
+    left: 43%;
+    top: 40%;
+}
+
+#bloco-cor {
+    position: absolute;
+    left: 60%;
+    top: 40%;
+}
+
+#titulo-atividade {
+    margin-top: 40px;
+    margin-left: 60px;
+}
+
+/* Adicionando transições suaves */
+.tabbutton, .comandoTapete, #titulo-atividade, .editor-bloco, .tapete-cor {
+    transition: all 0.3s ease; /* Transição suave para mudanças de estado */
+}
+
+#tab button:hover, #tab button:active, .tabbutton:hover, .tabbutton.active {
+    transition: background-color 0.3s ease; /* Transição suave para mudanças de cor de fundo */
+}
+
+#tapete-lateral, #fundo-cenario {
+    transition: background-image 0.3s ease; /* Transição suave para mudanças de gradiente */
+}
+
+#tapete-tab {
+    margin-left: 65px; /* Ajusta a margem esquerda para mover o título para o lado */
+    color: #000000;
+}
+
+/* Palavras-chave do código com estilo */
+.code-word {
+    color: #fff;
+    border: 2px solid black;
+    border-radius: 5px;
+    display: inline-block; /* Use flexbox to make the box adjust to text size */
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto; /* Center the box horizontally */
+    cursor: grab;
+    padding: 5px;
+}
+
+.relationals {
+    background-color: green;
+}
+
+.logicals {
+    background-color: rgb(2, 0, 128);
+}
+
+.input-keys {
+    background-color: gray;
+}
+
+.functions {
+    background-color: #AD0000;
+}
+
+.variables {
+    background-color: rgb(0, 187, 255);
+    color: #000000;
+}
+
+.input-functions {
+    background-color: rgb(144, 0, 255);
+}
+
+/* Blocos de código com área de soltar */
+.code-block {
+    border-radius: 5px;
+    color: #fff;
+    border: 2px solid black;
+    display: inline-block; 
+    padding: 8px;
+}
+
+.droppable-area {
+    display: inline-block;
+    border: 2px solid black;
+    padding: 5px;
+}
+
+/* Editor de código */
+#editor-teste {
+    width: 1000px;
+    height: 1000px;
+    border: 2px black solid;
+}
+
+
+[data-tooltip]::after {
+    content: attr(data-tooltip);
+    display: none;
+    position: absolute;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    white-space: nowrap;
+    /* Mais estilos conforme necessário */
+}
+
+[data-tooltip]:hover::after {
+    display: block;
+    z-index: 1000;
+    /* Posicionamento adicional se necessário */
+}
+
+
+.code-block-type{
+    text-align: center;
+}
+
+.code-blocks{
+    flex: 1;
+}
+
+.code-block-list{
+    align-items: center;
+    justify-content: center;
+}
+
+.add-arg-div{
+    order: -1;
+}
+
+
+#objects {
+    width: 170px; /* Defina um tamanho fixo desejado */
+    margin: 0 auto; /* Centralizar a div no centro */
+    /* Adicione outras propriedades de estilo conforme necessário */
+  }
+
+  html, body {
+    background: white;
+    font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif';
+
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  a {text-decoration: none;}
+
+  #file-upload {
+    margin: 0 auto;
+    padding: 10px;
+  }
+  .upload {
+    background: rgb(0, 0, 0);
+    border-radius: 5px;
+    width: 110px;height: 41px;
+    margin: 20px auto;
+    padding: 5px 10px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .upload:hover {opacity: 0.75;}
+  .upload:active {opacity: 1;}
+  .upload > a {
+    color: #FFF;
+    cursor: pointer;
+    /* font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 400; */
+    height: 40px;
+    width: 40px;
+    outline-offset: -5px;
+  }
+  .upload > a > span .fa {padding: 2px;}
+  .upload > a > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .upload > a > .files {
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+  }
+  .upload > a > .files > #files {
+    bottom: 0;
+    cursor: inherit;
+    /* font-size: 1000px !important; */
+    height: 300px;
+    margin: 0;
+    opacity: 0;
+    outline: none;
+    padding: 0;
+    position: absolute;
+    right: 0;
+  }
+
+  [draggable] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* Required to make elements draggable in old WebKit */
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
+}
+
+.box {
+  background: #E5E5E5;
+  /* border: 1px solid #CCC; */
+  border-radius: 3px;
+  margin: 20px auto 0px;
+  overflow: hidden;
+  position: relative;
+  padding: 15px;
+  /* max-width: 705px; */
+  height: auto;
+  text-align: center;
+  max-width: 300px; 
+  cursor:grab;
+}
+
+[draggable] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* Required to make elements draggable in old WebKit */
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
+}
+
+.box {
+  background: #E5E5E5;
+  /* border: 1px solid #CCC; */
+  border-radius: 3px;
+  margin: 20px auto 0px;
+  overflow: hidden;
+  position: relative;
+  padding: 15px;
+  /* max-width: 705px; */
+  height: auto;
+  text-align: center;
+  max-width: 300px; 
+  cursor:grab;
+}
+
+[draggable] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* Required to make elements draggable in old WebKit */
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
+}
+
+.box {
+  background: #E5E5E5;
+  /* border: 1px solid #CCC; */
+  border-radius: 3px;
+  margin: 20px auto 0px;
+  overflow: hidden;
+  position: relative;
+  padding: 15px;
+  /* max-width: 705px; */
+  height: auto;
+  text-align: center;
+  max-width: 300px; 
+  cursor:grab;
+}
+
+[draggable] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* Required to make elements draggable in old WebKit */
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
+}
+
+.box {
+  background: #E5E5E5;
+  /* border: 1px solid #CCC; */
+  border-radius: 3px;
+  margin: 20px auto 0px;
+  overflow: hidden;
+  position: relative;
+  padding: 15px;
+  /* max-width: 705px; */
+  height: auto;
+  text-align: center;
+  max-width: 300px; 
+  cursor:grab;
+}
+
+#container > img {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px; /* Define a altura máxima da imagem, ajuste conforme necessário */
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    text-align: center;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover {
+    color: black;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 100px;
+    margin: 10px 0;
+  }
+  
